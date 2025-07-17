@@ -174,7 +174,7 @@ const App = () => {
   // 메인 앱 렌더링
   return (
     <NotificationProvider>
-      <div className="min-h-screen bg-warm-gradient">
+      <div className="min-h-screen bg-warm-gradient cursor-default">
         {/* 메인 레이아웃 */}
         <div className="flex h-screen overflow-hidden">
           {/* 사이드바 */}

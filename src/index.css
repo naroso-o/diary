@@ -1,5 +1,20 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'ChosunGu';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'DungGeunMo';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 @layer theme {
   :root {
     /* 핑크 색상 */
@@ -30,7 +45,7 @@
 
 @layer base {
   html {
-    font-family: Inter, system-ui, sans-serif;
+    font-family: ChosunGu, system-ui, sans-serif;
   }
   
   body {
@@ -57,6 +72,10 @@
   
   .btn-secondary {
     @apply bg-white/90 text-pink-700 px-6 py-3 rounded-lg font-medium border-2 border-pink-200 hover:bg-pink-50 hover:border-pink-300 transition-all;
+  }
+
+  .btn-tertiary {
+    @apply bg-white/90 text-pink-700 px-6 py-3 rounded-lg font-medium hover:underline transition-all;
   }
   
   .nav-button {

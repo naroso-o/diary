@@ -1,5 +1,6 @@
 
 import { formatDateForDisplay, isDateToday } from '../../utils/dateUtils';
+import { Button } from '../ui/Button';
 
 interface EmptyDiaryStateProps {
     date: string;
@@ -54,15 +55,17 @@ export const EmptyDiaryState = ({
                 </svg>
             </div>
 
-            <button
+            <Button
                 onClick={onStartWriting}
-                className="btn-primary transform hover:scale-105 shadow-glow"
+                variant="primary"
+                label={isToday ? '일기 쓰기' : '일기 작성'}
+                icon={
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                    </svg>
+                }
             >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                </svg>
-                {isToday ? '일기 쓰기' : '일기 작성'}
-            </button>
+            </Button>
 
             <div className="mt-4 text-xs text-pink-400">
                 💡 {isToday ? '오늘 하루는 어떠셨나요?' : '그날의 기억을 되살려보세요'}

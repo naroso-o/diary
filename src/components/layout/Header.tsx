@@ -17,6 +17,7 @@ import { useAuth } from '../../hooks/useAuth'
 import { useSettings } from '../../hooks/useSettings'
 import type { ViewType } from '../../types'
 import type { User as UserType } from '../../types'
+import { Button } from '../ui/Button'
 
 interface HeaderProps {
     currentView: ViewType
@@ -100,28 +101,31 @@ export const Header = ({
                         {/* 일기 뷰일 때 날짜 네비게이션 */}
                         {currentView === 'diary' && (
                             <div className="flex items-center gap-2 ml-4">
-                                <button
-                                    onClick={() => navigateDate('prev')}
-                                    className="p-1 rounded hover:bg-pink-100 transition-colors"
-                                    aria-label="이전 날짜"
-                                >
-                                    <ArrowLeft className="w-4 h-4 text-pink-600" />
-                                </button>
 
-                                <button
-                                    onClick={goToToday}
-                                    className="px-3 py-1 text-sm text-pink-700 hover:bg-pink-50 rounded transition-colors"
+                                <Button
+                                    onClick={() => navigateDate('prev')}
+                                    size="sm"
+                                    variant="secondary"
+                                    label="이전 날짜"
+                                />
+                                <span
+                                    className="px-3 py-1 text-sm text-pink-700"
                                 >
                                     {formatDateForDisplay(selectedDate)}
-                                </button>
-
-                                <button
+                                </span>
+                                <Button
                                     onClick={() => navigateDate('next')}
-                                    className="p-1 rounded hover:bg-pink-100 transition-colors"
-                                    aria-label="다음 날짜"
-                                >
-                                    <ArrowRight className="w-4 h-4 text-pink-600" />
-                                </button>
+                                    size="sm"
+                                    variant="secondary"
+                                    label="다음 날짜"
+                                />
+                                <Button
+                                    onClick={goToToday}
+                                    size="sm"
+                                    variant="tertiary"
+                                    label="오늘로 이동"
+                                />
+
                             </div>
                         )}
                     </div>
@@ -129,36 +133,18 @@ export const Header = ({
 
                 {/* 오른쪽 섹션 */}
                 <div className="flex items-center gap-2">
-                    {/* 빠른 액션 버튼들 */}
-                    <div className="hidden md:flex items-center gap-1">
-                        <button
-                            onClick={() => onViewChange('search')}
-                            className="p-2 rounded-lg hover:bg-pink-50 transition-colors"
-                            title="검색 (Ctrl+F)"
-                        >
-                            <Search className="w-4 h-4 text-pink-600" />
-                        </button>
 
-                        <button
-                            onClick={() => onViewChange('calendar')}
-                            className="p-2 rounded-lg hover:bg-pink-50 transition-colors"
-                            title="캘린더 (Ctrl+C)"
-                        >
-                            <Calendar className="w-4 h-4 text-pink-600" />
-                        </button>
-
-                        <button
-                            onClick={toggleTheme}
-                            className="p-2 rounded-lg hover:bg-pink-50 transition-colors"
-                            title="테마 변경"
-                        >
-                            {settings.theme.name === 'dark' ? (
-                                <Sun className="w-4 h-4 text-pink-600" />
-                            ) : (
-                                <Moon className="w-4 h-4 text-pink-600" />
-                            )}
-                        </button>
-                    </div>
+                    <button
+                        onClick={toggleTheme}
+                        className="p-2 rounded-lg hover:bg-pink-50 transition-colors"
+                        title="테마 변경"
+                    >
+                        {settings.theme.name === 'dark' ? (
+                            <Sun className="w-4 h-4 text-pink-600" />
+                        ) : (
+                            <Moon className="w-4 h-4 text-pink-600" />
+                        )}
+                    </button>
 
                     {/* 구분선 */}
                     <div className="hidden md:block w-px h-6 bg-pink-200 mx-2" />

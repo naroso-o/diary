@@ -84,7 +84,7 @@ export const Sidebar = ({
                                     key={item.id}
                                     onClick={() => onViewChange(item.id)}
                                     className={`
-                    w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-all
+                    w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-all cursor-pointer
                     ${isActive
                                             ? 'bg-gradient-to-r from-pink-500 to-yellow-500 text-white shadow-md'
                                             : 'text-pink-700 hover:bg-pink-50'
