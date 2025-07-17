@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+@layer theme {
+  :root {
+    /* 핑크 색상 */
+    --color-pink-50: #fdf2f8;
+    --color-pink-100: #fce7f3;
+    --color-pink-200: #fbcfe8;
+    --color-pink-300: #f9a8d4;
+    --color-pink-400: #f472b6;
+    --color-pink-500: #ec4899;
+    --color-pink-600: #db2777;
+    --color-pink-700: #be185d;
+    --color-pink-800: #9d174d;
+    --color-pink-900: #831843;
+    
+    /* 노란색 */
+    --color-yellow-50: #fffbeb;
+    --color-yellow-100: #fef3c7;
+    --color-yellow-200: #fde68a;
+    --color-yellow-300: #fcd34d;
+    --color-yellow-400: #fbbf24;
+    --color-yellow-500: #f59e0b;
+    --color-yellow-600: #d97706;
+    --color-yellow-700: #b45309;
+    --color-yellow-800: #92400e;
+    --color-yellow-900: #78350f;
+  }
+}
+
+@layer base {
+  html {
+    font-family: Inter, system-ui, sans-serif;
+  }
+  
+  body {
+    @apply bg-gradient-to-br from-pink-100 via-pink-50 to-yellow-100 min-h-screen text-pink-900;
+  }
+}
+
+@layer components {
+  .bg-warm-gradient {
+    @apply bg-gradient-to-br from-pink-100 via-pink-50 to-yellow-100;
+  }
+  
+  .diary-card {
+    @apply bg-white/70 backdrop-blur-sm rounded-lg shadow-lg border border-pink-100;
+  }
+  
+  .sidebar {
+    @apply bg-white/80 backdrop-blur-sm shadow-lg border-r border-pink-200;
+  }
+  
+  .btn-primary {
+    @apply bg-gradient-to-r from-pink-500 to-yellow-500 text-white px-6 py-3 rounded-lg font-medium hover:from-pink-600 hover:to-yellow-600 transition-all;
+  }
+  
+  .btn-secondary {
+    @apply bg-white/90 text-pink-700 px-6 py-3 rounded-lg font-medium border-2 border-pink-200 hover:bg-pink-50 hover:border-pink-300 transition-all;
+  }
+  
+  .nav-button {
+    @apply w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all font-medium;
+  }
+  
+  .nav-button-active {
+    @apply bg-gradient-to-r from-pink-500 to-yellow-500 text-white shadow-md;
+  }
+  
+  .nav-button-inactive {
+    @apply text-pink-700 hover:bg-pink-50;
+  }
+  
+  .mood-button {
+    @apply p-3 rounded-lg border-2 transition-all transform hover:scale-105;
+  }
+  
+  .mood-button-active {
+    @apply border-pink-400 text-white shadow-lg;
+  }
+  
+  .mood-button-inactive {
+    @apply border-pink-200 bg-white hover:border-pink-300;
+  }
+  
+  .calendar-container {
+    @apply bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg;
+  }
+  
+  .calendar-day {
+    @apply p-3 rounded-lg text-center transition-all hover:scale-105 relative cursor-pointer font-medium min-h-[48px] flex flex-col items-center justify-center;
+  }
+  
+  .calendar-day-with-entry {
+    @apply bg-gradient-to-br from-pink-400 to-yellow-400 text-white font-semibold shadow-md;
+  }
+  
+  .calendar-day-empty {
+    @apply bg-pink-50 text-pink-700 hover:bg-pink-100;
+  }
+  
+  .calendar-day-today {
+    @apply ring-2 ring-pink-500;
+  }
+  
+  .input-field {
+    @apply w-full p-4 border-2 border-pink-200 rounded-lg focus:border-pink-400 focus:outline-none resize-none text-gray-700 bg-white/90 focus:bg-white;
+  }
+  
+  .loading-spinner {
+    @apply w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-pink-600 to-yellow-600 bg-clip-text text-transparent;
+  }
+  
+  .empty-state {
+    @apply text-center py-20;
+  }
+  
+  .empty-state-icon {
+    @apply w-32 h-32 bg-gradient-to-br from-pink-200 to-yellow-200 rounded-full flex items-center justify-center mx-auto mb-6;
+  }
+  
+  .empty-state-title {
+    @apply text-2xl font-bold text-pink-800 mb-4;
+  }
+  
+  .empty-state-description {
+    @apply text-pink-600 mb-6;
+  }
+}
+
+@layer utilities {
+  .animate-gentle-bounce {
+    animation: gentle-bounce 2s infinite;
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out forwards;
+  }
+  
+  .animate-slide-in {
+    animation: slide-in 0.3s ease-out forwards;
+  }
+  
+  @keyframes gentle-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+  
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes slide-in {
+    from { transform: translateX(-100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+}
