@@ -5,6 +5,7 @@ import type { DiaryEntry, MoodType } from '../../types';
 import { DiaryEditor } from './DiaryEditor';
 import { DiaryDisplay } from './DiaryDisplay';
 import { EmptyDiaryState } from './EmptyDiaryState';
+import { DiaryNavigation } from './DiaryNavigation';
 
 interface DiaryViewProps {
     selectedDate: string;
@@ -150,29 +151,45 @@ export const DiaryView = ({ selectedDate, onDateChange }: DiaryViewProps) => {
     // 일기 표시 모드
     if (currentEntry) {
         return (
-            <div className="p-6 animate-fade-in">
+            <div className="p-6">
                 <div className="mb-6">
-                    <h1 className="text-3xl font-bold text-gradient mb-2">오늘의 일기</h1>
-                    <p className="text-pink-600">{formatDateForDisplay(selectedDate)}</p>
+                    <DiaryNavigation
+                        selectedDate={selectedDate}
+                        onDateSelect={onDateChange || (() => { })}
+                    />
                 </div>
+                <div className="animate-fade-in">
+                    <div className="mb-6">
+                        <h1 className="text-3xl font-bold text-gradient mb-2">오늘의 일기</h1>
+                        <p className="text-pink-600">{formatDateForDisplay(selectedDate)}</p>
+                    </div>
 
-                <DiaryDisplay
-                    entry={currentEntry}
-                    onEdit={handleEdit}
-                    onDelete={handleDelete}
-                    loading={loading}
-                />
+                    <DiaryDisplay
+                        entry={currentEntry}
+                        onEdit={handleEdit}
+                        onDelete={handleDelete}
+                        loading={loading}
+                    />
+                </div>
             </div>
         );
     }
 
     // 빈 상태
     return (
-        <div className="p-6 flex items-center justify-center min-h-[80vh]">
-            <EmptyDiaryState
-                date={selectedDate}
-                onStartWriting={() => setIsEditing(true)}
-            />
+        <div className="p-6">
+            <div className="mb-6">
+                <DiaryNavigation
+                    selectedDate={selectedDate}
+                    onDateSelect={onDateChange || (() => { })}
+                />
+            </div>
+            <div className="p-6 flex flex-col items-center justify-center min-h-[80vh]">
+                <EmptyDiaryState
+                    date={selectedDate}
+                    onStartWriting={() => setIsEditing(true)}
+                />
+            </div>
         </div>
     );
 };

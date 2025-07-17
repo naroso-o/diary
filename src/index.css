@@ -65,6 +65,10 @@
   .sidebar {
     @apply bg-white/80 backdrop-blur-sm shadow-lg border-r border-pink-200;
   }
+
+  .input {
+    @apply w-full p-3 border-2 border-pink-200 rounded-lg focus:border-pink-400 focus:outline-none resize-none text-gray-700 bg-white/90 focus:bg-white;
+  }
   
   .btn-primary {
     @apply bg-gradient-to-r from-pink-500 to-yellow-500 text-white px-6 py-3 rounded-lg font-medium hover:from-pink-600 hover:to-yellow-600 transition-all;

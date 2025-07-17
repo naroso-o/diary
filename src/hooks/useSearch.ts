@@ -43,7 +43,7 @@ export const useSearch = (entries: DiaryEntry[]) => {
         debounce((searchQuery: string) => {
             setQuery(searchQuery);
             setIsSearching(false);
-        }, 300),
+        }, 200),
         []
     );
 

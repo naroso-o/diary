@@ -20,7 +20,7 @@ export const Button = ({ label, onClick, disabled, variant = 'primary', icon, si
     }
 
     return (
-        <button className={`cursor-pointer ${variantClasses[variant]} ${sizeClasses[size]}`} onClick={onClick} disabled={disabled}>
+        <button className={`cursor-pointer ${variantClasses[variant]} ${sizeClasses[size]} ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`} onClick={onClick} disabled={disabled}>
             <div className="flex items-center justify-centerw-full h-full">
                 {icon && <span className="mr-2">{icon}</span>}
                 <span className="whitespace-nowrap">{label}</span>
