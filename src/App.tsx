@@ -97,14 +97,14 @@ const App = () => {
             setCurrentView('diary')
             setSelectedDate(getCurrentDateString())
             break
-          case 'f':
-            e.preventDefault()
-            setCurrentView('search')
-            break
-          case 'c':
-            e.preventDefault()
-            setCurrentView('calendar')
-            break
+          // case 'f':
+          //   e.preventDefault()
+          //   setCurrentView('search')
+          //   break
+          // case 'c':
+          //   e.preventDefault()
+          //   setCurrentView('calendar')
+          //   break
           case 't':
             e.preventDefault()
             setSelectedDate(getCurrentDateString())
@@ -139,12 +139,23 @@ const App = () => {
   }
 
   // 로딩 상태 처리
-  if (authLoading || settingsLoading) {
+  if (settingsLoading) {
     return (
       <div className="min-h-screen bg-warm-gradient flex items-center justify-center">
         <div className="text-center">
           <LoadingSpinner size="lg" />
-          <p className="mt-4 text-pink-600 font-medium">앱을 초기화하는 중...</p>
+          <p className="mt-4 text-pink-600 font-medium">앱 설정을 불러오는 중...</p>
+        </div>
+      </div>
+    )
+  }
+
+  if (authLoading) {
+    return (
+      <div className="min-h-screen bg-warm-gradient flex items-center justify-center">
+        <div className="text-center">
+          <LoadingSpinner size="lg" />
+          <p className="mt-4 text-pink-600 font-medium">앱 인증을 불러오는 중...</p>
         </div>
       </div>
     )
